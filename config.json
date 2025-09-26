@@ -1,0 +1,100 @@
+{
+  "satellite_data": {
+    "sentinel1": {
+      "bands": [
+        "VV",
+        "VH"
+      ],
+      "resolution": 10,
+      "temporal_resolution": "6-12 days"
+    },
+    "sentinel2": {
+      "bands": [
+        "B2",
+        "B3",
+        "B4",
+        "B8",
+        "B11",
+        "B12"
+      ],
+      "resolution": 10,
+      "temporal_resolution": "5-10 days"
+    },
+    "landsat8": {
+      "bands": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "resolution": 30,
+      "temporal_resolution": "16 days"
+    }
+  },
+  "processing": {
+    "tile_size": 256,
+    "overlap": 32,
+    "normalize": true,
+    "cloud_threshold": 0.1
+  },
+  "models": {
+    "cnn": {
+      "epochs": 100,
+      "batch_size": 32,
+      "learning_rate": 0.001,
+      "filters": [
+        32,
+        64,
+        128,
+        256
+      ],
+      "kernel_size": 3,
+      "dropout": 0.2
+    },
+    "lstm": {
+      "epochs": 50,
+      "batch_size": 16,
+      "learning_rate": 0.001,
+      "units": [
+        128,
+        64,
+        32
+      ],
+      "dropout": 0.3,
+      "sequence_length": 10
+    },
+    "hybrid_cnn_lstm": {
+      "epochs": 75,
+      "batch_size": 24,
+      "learning_rate": 0.0005,
+      "cnn_filters": [
+        64,
+        128,
+        256
+      ],
+      "lstm_units": [
+        256,
+        128
+      ],
+      "dropout": 0.25
+    }
+  },
+  "prediction": {
+    "forecast_horizon": 365,
+    "confidence_intervals": [
+      0.68,
+      0.95
+    ],
+    "ensemble_size": 10
+  },
+  "alerts": {
+    "movement_threshold": 5.0,
+    "risk_zones": {
+      "high": 50,
+      "medium": 100,
+      "low": 200
+    }
+  }
+}

@@ -1,0 +1,11 @@
+Satellite/Sensor,Type,Spatial Resolution,Temporal Resolution,Key Bands/Features,Weather Independence,Cost,Best Use for Sand Monitoring
+Sentinel-1 (SAR),C-band SAR,5-40m,6-12 days,"VV, VH polarizations",Yes,Free,"Surface roughness, movement detection"
+Sentinel-2 (MSI),Multispectral Optical,10-60m,5-10 days,13 spectral bands,No,Free,"Vegetation mapping, sand indices"
+Landsat 8 (OLI),Multispectral Optical,15-30m,16 days,9 spectral bands,No,Free,Long-term change detection
+Landsat 9 (OLI-2),Multispectral Optical,15-30m,16 days,9 spectral bands,No,Free,Long-term change detection
+SPOT 6/7,Multispectral Optical,1.5-6m,1-3 days,4-5 spectral bands,No,Commercial,High-resolution mapping
+WorldView-2/3,Very High-Res Optical,0.3-2m,1-4 days,8-16 spectral bands,No,Commercial,Detailed dune morphology
+PlanetScope,Small Sat Optical,3-5m,Daily,4-5 spectral bands,No,Commercial,Frequent monitoring
+TerraSAR-X,X-band SAR,1-16m,11 days,Single/Dual polarization,Yes,Commercial,High-res movement detection
+ALOS PALSAR-2,L-band SAR,3-100m,14 days,Quad polarization,Yes,Commercial,Deep sand penetration
+RADARSAT-2,C-band SAR,3-100m,24 days,Quad polarization,Yes,Commercial,Oil spill monitoring on sand

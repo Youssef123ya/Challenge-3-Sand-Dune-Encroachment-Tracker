@@ -1,0 +1,11 @@
+Technique,Primary Application,Accuracy Range,Processing Speed,Data Requirements,Key Advantages,Limitations
+Convolutional Neural Networks (CNN),Feature extraction from satellite imagery,85-95%,Medium,Large labeled datasets,"Excellent feature learning, handles complex patterns","Requires large datasets, computationally intensive"
+Recurrent Neural Networks (RNN/LSTM),Temporal pattern modeling and prediction,80-90%,Slow,Long time series,"Captures temporal dependencies, good for prediction","Sensitive to sequence length, complex training"
+Time Series Analysis (ARIMA),Long-term trend forecasting,75-85%,Fast,Historical data,"Statistical rigor, interpretable results","Assumes linear relationships, limited prediction horizon"
+Random Forest,Multi-spectral classification,88-94%,Fast,Multi-band imagery,"Robust to noise, handles missing data","Black box model, requires parameter tuning"
+Support Vector Machine (SVM),Binary dune/non-dune classification,82-88%,Medium,Training samples,"Works with small datasets, good generalization","Sensitive to feature selection, limited scalability"
+Generative Adversarial Networks (GAN),Sand dune movement simulation,85-92%,Very Slow,Extensive training data,"Generates realistic predictions, very fast inference","Very complex training, requires massive datasets"
+Hybrid CNN-RNN,Spatiotemporal prediction,90-97%,Slow,Multi-temporal imagery,Combines spatial and temporal analysis,"Extremely complex, high computational requirements"
+Change Vector Analysis (CVA),Change detection between time periods,78-88%,Fast,Bi-temporal images,"Simple implementation, fast processing",Sensitive to radiometric differences
+Principal Component Analysis (PCA),Dimensionality reduction,70-80%,Fast,Multi-spectral data,Reduces computational complexity,May lose important information
+Object-Based Image Analysis (OBIA),Dune boundary delineation,85-92%,Medium,High-resolution imagery,Accurate boundary detection,Subjective parameter setting

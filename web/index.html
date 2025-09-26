@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sand Dune Encroachment Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <span class="icon">🏜️</span>
+                    Sand Dune Encroachment Tracker
+                </h1>
+                <div class="header-controls">
+                    <div class="status-indicator">
+                        <span class="status status--success">System Active</span>
+                        <span class="last-update">Last Update: Sept 27, 2025 01:00</span>
+                    </div>
+                    <button class="btn btn--secondary accessibility-toggle" id="accessibilityToggle">
+                        🔍 Accessibility
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-tab" data-tab="predictions">Predictions</button>
+            <button class="nav-tab" data-tab="risk-assessment">Risk Assessment</button>
+            <button class="nav-tab" data-tab="analysis">Data Analysis</button>
+            <button class="nav-tab" data-tab="configuration">Configuration</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="dashboard-grid">
+                    <!-- KPI Cards -->
+                    <section class="kpi-section">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-value" id="activeAlerts">2</div>
+                                <div class="kpi-label">Active Alerts</div>
+                                <div class="kpi-trend danger">↑</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value" id="avgMovement">9.4</div>
+                                <div class="kpi-label">Avg Movement (m/month)</div>
+                                <div class="kpi-trend warning">↗</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value" id="modelAccuracy">95%</div>
+                                <div class="kpi-label">Model Accuracy</div>
+                                <div class="kpi-trend success">↑</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value" id="activeSites">3</div>
+                                <div class="kpi-label">Monitoring Sites</div>
+                                <div class="kpi-trend stable">→</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Interactive Map -->
+                    <section class="map-section">
+                        <h2>Site Monitoring Map</h2>
+                        <div class="map-container" id="mapContainer">
+                            <div class="map-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color high"></span>
+                                    <span>High Risk</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color medium"></span>
+                                    <span>Medium Risk</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color low"></span>
+                                    <span>Low Risk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Site Details -->
+                    <section class="site-details">
+                        <h2>Monitoring Sites</h2>
+                        <div class="site-list" id="siteList"></div>
+                    </section>
+
+                    <!-- Current Alerts -->
+                    <section class="alerts-section">
+                        <h2>Active Alerts</h2>
+                        <div class="alerts-list" id="alertsList"></div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Predictions Tab -->
+            <div class="tab-content" id="predictions">
+                <div class="predictions-grid">
+                    <section class="model-selection">
+                        <h2>Prediction Models</h2>
+                        <div class="model-controls">
+                            <div class="form-group">
+                                <label class="form-label">Select Model:</label>
+                                <select class="form-control" id="modelSelect">
+                                    <option value="CNN">CNN Model</option>
+                                    <option value="LSTM">LSTM Model</option>
+                                    <option value="Hybrid CNN-LSTM">Hybrid CNN-LSTM</option>
+                                    <option value="Ensemble" selected>Ensemble Model</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Time Horizon:</label>
+                                <select class="form-control" id="timeHorizon">
+                                    <option value="7">1 Week</option>
+                                    <option value="30" selected>1 Month</option>
+                                    <option value="90">3 Months</option>
+                                    <option value="365">1 Year</option>
+                                </select>
+                            </div>
+                            <button class="btn btn--primary" id="runPrediction">Run Prediction</button>
+                        </div>
+                    </section>
+
+                    <section class="prediction-visualization">
+                        <h2>Movement Predictions</h2>
+                        <div class="prediction-results" id="predictionResults">
+                            <div class="prediction-cards" id="predictionCards"></div>
+                            <div class="chart-container" style="position: relative; height: 400px;">
+                                <canvas id="predictionChart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Tab -->
+            <div class="tab-content" id="risk-assessment">
+                <div class="risk-grid">
+                    <section class="infrastructure-section">
+                        <h2>Infrastructure at Risk</h2>
+                        <div class="infrastructure-list" id="infrastructureList"></div>
+                    </section>
+
+                    <section class="risk-zones">
+                        <h2>Risk Zone Visualization</h2>
+                        <div class="risk-map" id="riskMap"></div>
+                    </section>
+
+                    <section class="risk-timeline">
+                        <h2>Risk Evolution Timeline</h2>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="riskTimelineChart"></canvas>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Data Analysis Tab -->
+            <div class="tab-content" id="analysis">
+                <div class="analysis-grid">
+                    <section class="historical-data">
+                        <h2>Historical Movement Data</h2>
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <canvas id="historicalChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="model-performance">
+                        <h2>Model Performance Comparison</h2>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="trend-analysis">
+                        <h2>Movement Trends</h2>
+                        <div class="trend-stats" id="trendStats"></div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Configuration Tab -->
+            <div class="tab-content" id="configuration">
+                <div class="config-grid">
+                    <section class="alert-settings">
+                        <h2>Alert Configuration</h2>
+                        <div class="config-form">
+                            <div class="form-group">
+                                <label class="form-label">Movement Threshold (m/month):</label>
+                                <input type="number" class="form-control" id="movementThreshold" value="5.0" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Update Frequency:</label>
+                                <select class="form-control" id="updateFrequency">
+                                    <option value="1">1 hour</option>
+                                    <option value="6" selected>6 hours</option>
+                                    <option value="12">12 hours</option>
+                                    <option value="24">24 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="risk-zone-config">
+                        <h2>Risk Zone Settings</h2>
+                        <div class="config-form">
+                            <div class="form-group">
+                                <label class="form-label">High Risk Distance (m):</label>
+                                <input type="number" class="form-control" id="highRiskDistance" value="50">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Medium Risk Distance (m):</label>
+                                <input type="number" class="form-control" id="mediumRiskDistance" value="100">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Low Risk Distance (m):</label>
+                                <input type="number" class="form-control" id="lowRiskDistance" value="200">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="data-sources">
+                        <h2>Data Sources</h2>
+                        <div class="config-form">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <input type="checkbox" checked> Sentinel-1/2
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <input type="checkbox" checked> Landsat-8
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <input type="checkbox"> SPOT-6
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="config-actions">
+                        <button class="btn btn--primary" id="saveConfig">Save Configuration</button>
+                        <button class="btn btn--secondary" id="exportReport">Export Report</button>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
