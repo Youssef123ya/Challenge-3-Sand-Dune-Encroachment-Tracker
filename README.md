@@ -1,5 +1,5 @@
 # Sand Dune Encroachment Tracker
-
+<img width="685" height="358" alt="Sand Dune" src="https://github.com/user-attachments/assets/fc559552-5093-4107-a305-343dfddef429" />
 🏜️ **Advanced Predictive System for Sand Dune Movement Monitoring and Infrastructure Protection**
 
 ## Overview
