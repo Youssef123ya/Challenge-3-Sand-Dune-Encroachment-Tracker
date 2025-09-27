@@ -277,20 +277,6 @@ Access the interactive dashboard at: `index.html`
 - `forecast_trajectory(pos, steps, data)`: Trajectory forecasting
 - `assess_risk(trajectory, infrastructure)`: Risk assessment
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our contributing guidelines:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests and documentation
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🙏 Acknowledgments
 
 - **ESA Copernicus Program**: Sentinel satellite data
